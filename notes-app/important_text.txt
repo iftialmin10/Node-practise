@@ -1,0 +1,18 @@
+git status
+git add .
+git commit -m " my commit message"
+git push origin master
+
+extra
+git pull origin master
+
+
+In node always check folder name in which we run the code by terminal
+After installing nodemon in windows first check version. If no version show then go to nodemon folder in C drive and delete ps1 file
+For stop nodemon press ctrl+C
+
+Version of npm
+chalk = 2.4.1
+validator = 10.8.0
+nodemon = 1.18.5
+
