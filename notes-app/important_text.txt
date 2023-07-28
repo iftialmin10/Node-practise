@@ -4,7 +4,7 @@ git commit -m " my commit message"
 git push origin master
 
 extra
-git pull origin master
+git pull origin main
 
 
 In node always check folder name in which we run the code by terminal

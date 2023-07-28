@@ -1,15 +1,84 @@
+// Yargs for argument parsing
+const yargs = require('yargs');
+
 const command = process.argv[2];
 
-console.log(process.argv);
+// Customize yargs version
+yargs.version('1.1.1');
 
-if (command === 'add') {
-  console.log('Adding note');
-} else if (command === 'remove') {
-  console.log('Removing note');
-}
+// add, remove, read, list
+// Create add command
+yargs.command({
+  command: 'add',
+  describe: 'Add a new note',
+  // here builder is an option configaration
+  builder: {
+    // here builder is a another property which have two object those are describe in details about command
+    title: {
+      describe: 'Note title',
+      demandOption: true, // if required than its worked
+      type: 'string',
+    },
+    body: {
+      describe: 'Body of the note',
+      demandOption: true,
+      type: 'string',
+    },
+  },
+  handler: function (argv) {
+    console.log('Title: ' + argv.title); // here argv.title match with title property and add here
+    console.log('Body: ' + argv.body);
+  },
+});
+
+// Create remove command
+yargs.command({
+  command: 'remove',
+  describe: 'Remove a new note',
+  builder: {
+    title: {
+      describe: 'note Title',
+    },
+  },
+  handler: function (argv) {
+    console.log('Removeing notes!!!', argv);
+  },
+});
+
+// Create list command
+yargs.command({
+  command: 'list',
+  describe: 'List a new note',
+  handler: function () {
+    console.log('Listing notes!!!');
+  },
+});
+
+// Create read command
+yargs.command({
+  command: 'read',
+  describe: 'Read a new note',
+  handler: function () {
+    console.log('Reading notes!!!');
+  },
+});
+
+//console.log(yargs.argv); // here yargs show or read argument property from terminal and also we can access them from command
+
+// Instead use
+yargs.parse(); // by using this we can avoid double log
+
+//console.log(process.argv);
+
+// without yargs
+// if (command === 'add') {
+//   console.log('Adding note');
+// } else if (command === 'remove') {
+//   console.log('Removing note');
+// }
 
 // Challenge 4
-const chalk = require('chalk');
+// const chalk = require('chalk');
 
 // console.log(chalk.green('Success!'));
 // console.log(chalk.bgRed('Erorr!!!'));
