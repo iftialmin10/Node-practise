@@ -6,13 +6,16 @@ git push origin master
 extra
 git pull origin main
 
+Before running any Nodejs code always check node module. If not there any node module than install it by "npm install". Another important thing is when we upload any
+code in github or share code with someone by zip than remove the node module file. 
 
 In node always check folder name in which we run the code by terminal
 After installing nodemon in windows first check version. If no version show then go to nodemon folder in C drive and delete ps1 file
-For stop nodemon press ctrl+C
+For stop nodemon press 'ctrl+C'
 
 Version of npm
 chalk = 2.4.1
 validator = 10.8.0
 nodemon = 1.18.5
 
+debugger: in our programme we used console.log() for debug our programme. Its a basic tool and also time consuming. Everytime we write console than again need to remove those line. By default debugger dont pause the programme. For running this we have to use "inspect" after "node" keyword and remaining all are same. Through debugger we can go to developer mode and can see everything in chrome browser. After that go to "chrome://inspect". If u dont see anything under remote target than u have to configure it , for this u have configure this as same as listening option in console "127.0.0.1:9229". After that go to any of the inspect mode and ta ta new window open with new thing. In other language there are main function in which programme can run but in chrome 8 there a function called script run the programme from top to bottom. To access all the file from developer tool u have to add folder from left_side bar. press Esc button for toggle console. If u close the developer tool and want to debug again than simply write "restart" keyword in vscode console. If u want to close the developer tool than repeat twice "ctrl+c". After working with debugger than remove the keyword from programme.

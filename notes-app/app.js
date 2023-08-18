@@ -1,10 +1,9 @@
+const chalk = require('chalk');
 // Yargs for argument parsing
 const yargs = require('yargs');
+const notes = require('./notes');
 
 const command = process.argv[2];
-
-// Customize yargs version
-yargs.version('1.1.1');
 
 // add, remove, read, list
 // Create add command
@@ -25,11 +24,14 @@ yargs.command({
       type: 'string',
     },
   },
-  handler: function (argv) {
-    console.log('Title: ' + argv.title); // here argv.title match with title property and add here
-    console.log('Body: ' + argv.body);
+  handler(argv) {
+    notes.addNote(argv.title, argv.body); // using this method we call addNote function to use its data
+
+    //console.log('Title: ' + argv.title); // here argv.title match with title property and add here
   },
 });
+
+// Challenge Setup command option
 
 // Create remove command
 yargs.command({
@@ -38,10 +40,12 @@ yargs.command({
   builder: {
     title: {
       describe: 'note Title',
+      demandOption: true,
+      type: 'string',
     },
   },
-  handler: function (argv) {
-    console.log('Removeing notes!!!', argv);
+  handler(argv) {
+    notes.removeNote(argv.title);
   },
 });
 
@@ -49,8 +53,9 @@ yargs.command({
 yargs.command({
   command: 'list',
   describe: 'List a new note',
-  handler: function () {
-    console.log('Listing notes!!!');
+  handler() {
+    //console.log('Listing notes!!!');
+    notes.listNote();
   },
 });
 
@@ -58,8 +63,15 @@ yargs.command({
 yargs.command({
   command: 'read',
   describe: 'Read a new note',
-  handler: function () {
-    console.log('Reading notes!!!');
+  builder: {
+    title: {
+      describe: 'note Title',
+      demandOption: true,
+      type: 'string',
+    },
+  },
+  handler(argv) {
+    notes.readNote(argv.title);
   },
 });
 
@@ -70,6 +82,9 @@ yargs.parse(); // by using this we can avoid double log
 
 //console.log(process.argv);
 
+// Customize yargs version
+//yargs.version('1.1.1');
+
 // without yargs
 // if (command === 'add') {
 //   console.log('Adding note');
@@ -78,7 +93,6 @@ yargs.parse(); // by using this we can avoid double log
 // }
 
 // Challenge 4
-// const chalk = require('chalk');
 
 // console.log(chalk.green('Success!'));
 // console.log(chalk.bgRed('Erorr!!!'));
