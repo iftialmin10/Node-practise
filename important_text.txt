@@ -26,6 +26,14 @@ debugger: in our programme we used console.log() for debug our programme. Its a 
 Asynchronous:
 In Asynchronous Node.js there are script, console, callstack, Node_APIs, callback queue and event loop. In nodejs there have by default main function which holds the whole script. Call stack holds the function only when the function is called and when the function done the its also pop off from the stack . console.log is also a function. Javascript is a single thread programming language but Nodejs is not a single thread language. If any function of Javascript not supported in v8 engine btu nodejs support them by itself with c++ language and than nodejs register this function in Node APIs . Since programme is written in single thread but nodejs have other thread remaining in c++ thats why we dont have to completely wait and this is the non blocking nature of nodejs. Javascript is a single threaded its work with function following call stack but node js by c++ its handle the events in Node_APIs. Callback queue maintain a list of all of the call back function that are ready to get executed. Callback queue always check the Node APIs register list, and wait for which event done first its work. After finishing first work done in Node APIs , callback queue check there are any function remaining inside the callback queue, if remaining than execute them first than look after to callback queue, if not than it pick up the iteam from Node APIs to callback queue and ready to execute. Before executed it needed to added to the call stack thats where function go to run. In this stage event loop play its role. event loop did two things here , 1st one is it check call stack queue is empty or not , if empty than it added callback function to call stack to execute, 2nd one is checking callback queue has any iteam or not, if remaining it added to call stack and if not remaing than it pick a finished function from Node APIs. Event loop keep waiting callback queue until the main function pop off from the call stack queue. Node is an non blocking system thats why it print randomly finished work.
 
+Async is multi-thread, which means operations or programs can run in parallel.
+Sync is single-thread, so only one operation or program will run at a time.
+Async is non-blocking, which means it will send multiple requests to a server.
+Sync is blocking — it will only send the server one request at a time and will wait for that request to be answered by the server.
+Async increases throughput because multiple operations can run at the same time.
+Sync is slower and more methodical.
+
+
 Collect weather data from "openweathermap"
 
 For chrome browser read json data add extension "JSON Fromatter"
