@@ -2,19 +2,19 @@ const request = require('request');
 
 const forecast = (latitude, longitude, callback) => {
   const url = 'https//....' + latitude + '&' + longitude + 'api-key';
-  request({ url: url, json: true }, (error, response) => {
+  request({ url, json: true }, (error, { body }) => {
     if (error) {
       callback('Unable to connect to weather service', undefined);
-    } else if (response.body.error) {
+    } else if (body.error) {
       callback('Unable to find location', undefined);
     } else {
       callback(undefined, {
         forecast:
-          response.body.weather[0].description +
+          body.weather[0].description +
           ' It is currently ' +
-          response.body.main.temp +
+          body.main.temp +
           'degrees out. There is a ' +
-          response.body.main.humidity +
+          body.main.humidity +
           ' of humidity',
       });
     }
