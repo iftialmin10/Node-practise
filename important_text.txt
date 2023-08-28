@@ -18,6 +18,8 @@ chalk@2.4.1
 validator@10.8.0
 nodemon@1.18.5
 request@2.88.0
+express@4.16.4
+
 
 At the time of installing npm module we face ton of question and we set the answer by default. For avoiding this after write "npm init" press "ctrl+c" to shutdown. After that use "npm init -y" to set all value as default.
 
@@ -39,3 +41,9 @@ Collect weather data from "openweathermap"
 For chrome browser read json data add extension "JSON Fromatter"
 
 mapbox offer location web based service
+
+For using express in new directory first install or initialize npm module "npm init -y". Than use "npm i express@4.16.4".
+
+For running js file but this file is not include in root folder than use "node src/app.js". After running this server is up and runnig but for stop server use "ctrl+c"
+
+For running server dont have any idea if we add new route. For this we need to stop server and have to restart the server again. But it is pain ful for each and every time to resart the server. To solve this issue use nodemon "src/app.js".
