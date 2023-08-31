@@ -19,7 +19,7 @@ validator@10.8.0
 nodemon@1.18.5
 request@2.88.0
 express@4.16.4
-
+hbs@4.0.1
 
 At the time of installing npm module we face ton of question and we set the answer by default. For avoiding this after write "npm init" press "ctrl+c" to shutdown. After that use "npm init -y" to set all value as default.
 
@@ -47,3 +47,7 @@ For using express in new directory first install or initialize npm module "npm i
 For running js file but this file is not include in root folder than use "node src/app.js". After running this server is up and runnig but for stop server use "ctrl+c"
 
 For running server dont have any idea if we add new route. For this we need to stop server and have to restart the server again. But it is pain ful for each and every time to resart the server. To solve this issue use nodemon "src/app.js".
+
+we use hbs instead handlerbars to integret this module with express. If we want to serve up a static document than we can continue to put them in public but if we need a dynamic content than handlebars is probably the best. So if we use index.hbs than delete or remove index.html from public folder. Note that from website or server no one can access or read hbs file.
+index.hbs nothing but a index.html. By hbs we can chsnge our website static to dynamic.
+We can configure or rename views and also for that we have to set the absolute path

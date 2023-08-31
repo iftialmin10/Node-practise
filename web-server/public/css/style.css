@@ -1,0 +1,8 @@
+h1 {
+  color: grey;
+}
+
+/*we can target and can also configure img file*/
+img {
+  width: 250px;
+}
