@@ -1,5 +1,6 @@
 const path = require('path'); //core module dont need to install
 const express = require('express');
+const hbs = require('hbs');
 
 // Node actually provide us two variable
 //console.log(__dirname); // in console that contains a path to the directory the current script lives in
@@ -11,13 +12,15 @@ const app = express(); // declare variable to store express and for generate the
 
 //Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public'); //here we select a file which we want run in our root or home-page
-const viewsPath = path.join(__dirname, '../templates');
+const viewsPath = path.join(__dirname, '../templates/views');
+const partialsPath = path.join(__dirname, '../templates/partials'); // .. means root folder
 
 // Setup handlebars engine and views location
 // After installing hbs , we need to tell express which templating we installed
 app.set('view engine', 'hbs'); //set allows us to set a key and a value for a given express setting
 // after setting absolute path than need to set value
 app.set('views', viewsPath);
+hbs.registerPartials(partialsPath); // registerPartials takes a path to the directory where partials live
 
 // Setup static directory to serve
 app.use(express.static(publicDirectoryPath)); //express.static() is function takes path to the folder as a argument
@@ -25,25 +28,26 @@ app.use(express.static(publicDirectoryPath)); //express.static() is function tak
 //after set the hbs than need to route
 app.get('', (req, res) => {
   // render allow us to render one of our views. here no need to extension only match up with name of the template
-  res.render(__dirname + '/templates/index', {
+  res.render('index', {
     title: 'Weather',
     name: 'Ifti',
   }); // res.render(1st arg is the name of the view to render, second arg is an object which contains all of the values want that view to able to access)
 });
 
 app.get('/about', (req, res) => {
-  res.render(__dirname + '/templates/about', {
+  res.render('about', {
     title: 'About me',
     name: 'Ishrak',
   });
 });
 
 app.get('/help', (req, res) => {
-  res.render(__dirname + '/templates/help', {
+  res.render('help', {
     title: 'Help',
     name: 'Maria',
   });
 });
+
 // if user go to this url than what reurn or get , html or json.
 // below route doesnt work if the path.join() run first
 // app.get('', (req, res) => {
@@ -78,6 +82,23 @@ app.get('/help', (req, res) => {
 //4th route
 app.get('/weather', (req, res) => {
   res.send('weather page');
+});
+
+app.get('/help/*', (req, res) => {
+  res.render('404', {
+    title: '404',
+    name: 'Ifti',
+    error_message: 'Help article not found',
+  });
+});
+
+app.get('*', (req, res) => {
+  //here in url we use * sign which is provided by express as wild-card and useful for any unmatched url
+  res.render('404', {
+    title: '404',
+    name: 'Ifti',
+    error_message: 'Page not found',
+  });
 });
 
 // app.com (only domain)

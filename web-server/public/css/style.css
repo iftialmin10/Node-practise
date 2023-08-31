@@ -1,8 +1,46 @@
-h1 {
-  color: grey;
+body {
+  color: #333333;
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 650px;
+  margin: 0 auto; /* first_one is top and bottom and second_one is left and right scalling*/
+  padding: 0 16px; /* first_one is top and bottom and second_one is left and right scalling*/
+
+  display: flex; /* for using flex box first need to set it in to body element*/
+  flex-direction: column; /*by default value is row*/
+  min-height: 100vh; /*vh = view port height*/
 }
 
-/*we can target and can also configure img file*/
-img {
+.main-content {
+  flex-grow: 1;
+}
+
+/* difference between margin and padding. when we need to space we have to space inside or outside of box. Space inside is called padding and space outside called margin*/
+
+footer {
+  background: #888888;
+  border-top: 1px solid #eeeeee;
+  margin-top: 16px;
+  padding: 16px;
+}
+
+header {
+  margin-top: 16px;
+  margin-bottom: 48px;
+}
+
+h1 {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+/*if our targetted element used different places and we dont want to manipulate all than target the element with its parent tag*/
+header a {
+  color: #888888;
+  margin-right: 16px;
+  text-decoration: none;
+}
+
+/* we can also target element by class name */
+.portrait {
   width: 250px;
 }

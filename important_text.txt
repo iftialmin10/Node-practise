@@ -51,3 +51,15 @@ For running server dont have any idea if we add new route. For this we need to s
 we use hbs instead handlerbars to integret this module with express. If we want to serve up a static document than we can continue to put them in public but if we need a dynamic content than handlebars is probably the best. So if we use index.hbs than delete or remove index.html from public folder. Note that from website or server no one can access or read hbs file.
 index.hbs nothing but a index.html. By hbs we can chsnge our website static to dynamic.
 We can configure or rename views and also for that we have to set the absolute path
+
+In hbs we can assign value as like {{value}} and can also comment by {{! comment}}
+
+nodemon only restart .js or express file but not .hbs file after saving file. But both of them need to load the templates(dir name) but doesnt restarted when new templates are created the server. But we can easily address this by customizing our node on command. For solving this issue we need to close nodemon first by 'ctrl+c' than write the command 'nodemon src/app.js -e js,hbs'. Here -e flag for extension.
+
+If we get the error when we use partial as like dont find partial than change the register_path as root to only /.
+
+If we want to access or read something or value from .hbs file to other .hbs file than in 2nd .hbs use {{>1st_file_name.hbs}}
+
+If someone search a directory which we dont support than give them a useful message as like 404 in our homepage. Through wild-card we can do single or bunch of request. 
+
+Note: when we use render method but from a inside of a folder not root folder than please follow the following structure: res.render(__dirname + 'render_file_path(root to render file directory)'{here write properties as like object}). But if view file or render file or folder is inside of root directory thanuse normal rule.
