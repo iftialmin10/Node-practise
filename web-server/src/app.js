@@ -1,6 +1,8 @@
 const path = require('path'); //core module dont need to install
 const express = require('express');
 const hbs = require('hbs');
+const geocode = require('./utils/geocode');
+const forecast = require('./utils/forecast');
 
 // Node actually provide us two variable
 //console.log(__dirname); // in console that contains a path to the directory the current script lives in
@@ -81,7 +83,51 @@ app.get('/help', (req, res) => {
 
 //4th route
 app.get('/weather', (req, res) => {
-  res.send('weather page');
+  if (!req.query.address) {
+    return res.send({
+      error: 'No address found',
+    });
+  }
+
+  geocode(req.query.address, (error, { latitude, longitude, location }) => {
+    if (error) {
+      return res.send({ error }); //shortend
+    }
+    forecast(latitude, longitude, (error, forecast) => {
+      if (error) {
+        return res.send({ error });
+      }
+      res.send({
+        forecast: forecastData,
+        location,
+        address: req.query.address,
+      });
+    });
+  });
+
+  // res.send({
+  //   forecast: 'It is raining',
+  //   location: 'Dhaka',
+  //   address: req.query.address,
+  // });
+});
+
+/* after running this code we get error message in console bcz http request have a 
+ single request that goes to the server and a single response that comes back but
+ in this case we are indeed trying to respond twice*/
+app.get('/products', (req, res) => {
+  if (!req.query.search) {
+    return res.send({
+      // for avoiding error we use return to not execute the second request. Here we use return instead of else, both are same.
+      error: 'You must provide a search term',
+    });
+  }
+
+  console.log(req.query.search);
+  // below is the second request for shown error
+  res.send({
+    products: [],
+  });
 });
 
 app.get('/help/*', (req, res) => {

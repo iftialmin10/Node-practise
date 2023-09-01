@@ -6,8 +6,8 @@ git push origin master
 extra
 git pull origin main
 
-Before running any Nodejs code always check node module. If not there any node module than install it by "npm install". Another important thing is when we upload any
-code in github or share code with someone by zip than remove the node module file. 
+Before running any Nodejs code always check node module. If not there any node module than install it by "npm install".
+Another important thing is when we upload any code in github or share code with someone by zip than remove the node module file. 
 
 In node always check folder name in which we run the code by terminal
 After installing nodemon in windows first check version. If no version show then go to nodemon folder in C drive and delete ps1 file
@@ -21,12 +21,32 @@ request@2.88.0
 express@4.16.4
 hbs@4.0.1
 
-At the time of installing npm module we face ton of question and we set the answer by default. For avoiding this after write "npm init" press "ctrl+c" to shutdown. After that use "npm init -y" to set all value as default.
+At the time of installing npm module we face ton of question and we set the answer by default. For avoiding this after write "npm init" press "ctrl+c" to shutdown.
+After that use "npm init -y" to set all value as default.
 
-debugger: in our programme we used console.log() for debug our programme. Its a basic tool and also time consuming. Everytime we write console than again need to remove those line. By default debugger dont pause the programme. For running this we have to use "inspect" after "node" keyword and remaining all are same. Through debugger we can go to developer mode and can see everything in chrome browser. After that go to "chrome://inspect". If u dont see anything under remote target than u have to configure it , for this u have configure this as same as listening option in console "127.0.0.1:9229". After that go to any of the inspect mode and ta ta new window open with new thing. In other language there are main function in which programme can run but in chrome 8 there a function called script run the programme from top to bottom. To access all the file from developer tool u have to add folder from left_side bar. press Esc button for toggle console. If u close the developer tool and want to debug again than simply write "restart" keyword in vscode console. If u want to close the developer tool than repeat twice "ctrl+c". After working with debugger than remove the keyword from programme.
+debugger: in our programme we used console.log() for debug our programme. Its a basic tool and also time consuming. Everytime we write console than again need to 
+remove those line. By default debugger dont pause the programme. For running this we have to use "inspect" after "node" keyword and remaining all are same.
+Through debugger we can go to developer mode and can see everything in chrome browser. After that go to "chrome://inspect". If u dont see anything under remote 
+target than u have to configure it , for this u have configure this as same as listening option in console "127.0.0.1:9229". After that go to any of the inspect 
+mode and ta ta new window open with new thing. In other language there are main function in which programme can run but in chrome 8 there a function called script 
+run the programme from top to bottom. To access all the file from developer tool u have to add folder from left_side bar. press Esc button for toggle console. 
+If u close the developer tool and want to debug again than simply write "restart" keyword in vscode console. If u want to close the developer tool than repeat twice 
+"ctrl+c". After working with debugger than remove the keyword from programme.
 
 Asynchronous:
-In Asynchronous Node.js there are script, console, callstack, Node_APIs, callback queue and event loop. In nodejs there have by default main function which holds the whole script. Call stack holds the function only when the function is called and when the function done the its also pop off from the stack . console.log is also a function. Javascript is a single thread programming language but Nodejs is not a single thread language. If any function of Javascript not supported in v8 engine btu nodejs support them by itself with c++ language and than nodejs register this function in Node APIs . Since programme is written in single thread but nodejs have other thread remaining in c++ thats why we dont have to completely wait and this is the non blocking nature of nodejs. Javascript is a single threaded its work with function following call stack but node js by c++ its handle the events in Node_APIs. Callback queue maintain a list of all of the call back function that are ready to get executed. Callback queue always check the Node APIs register list, and wait for which event done first its work. After finishing first work done in Node APIs , callback queue check there are any function remaining inside the callback queue, if remaining than execute them first than look after to callback queue, if not than it pick up the iteam from Node APIs to callback queue and ready to execute. Before executed it needed to added to the call stack thats where function go to run. In this stage event loop play its role. event loop did two things here , 1st one is it check call stack queue is empty or not , if empty than it added callback function to call stack to execute, 2nd one is checking callback queue has any iteam or not, if remaining it added to call stack and if not remaing than it pick a finished function from Node APIs. Event loop keep waiting callback queue until the main function pop off from the call stack queue. Node is an non blocking system thats why it print randomly finished work.
+In Asynchronous Node.js there are script, console, callstack, Node_APIs, callback queue and event loop. In nodejs there have by default main function which holds the 
+whole script. Call stack holds the function only when the function is called and when the function done the its also pop off from the stack . console.log is also a 
+function. Javascript is a single thread programming language but Nodejs is not a single thread language. If any function of Javascript not supported in v8 engine but 
+nodejs support them by itself with c++ language and than nodejs register this function in Node APIs . Since programme is written in single thread but nodejs have 
+other thread remaining in c++ thats why we dont have to completely wait and this is the non blocking nature of nodejs. Javascript is a single threaded its work with 
+function following call stack but node js by c++ its handle the events in Node_APIs. Callback queue maintain a list of all of the call back function that are ready to
+get executed. Callback queue always check the Node APIs register list, and wait for which event done first its work. After finishing first work done in Node APIs , 
+callback queue check there are any function remaining inside the callback queue, if remaining than execute them first than look after to callback queue, if not than 
+it pick up the iteam from Node APIs to callback queue and ready to execute. Before executed it needed to added to the call stack thats where function go to run. 
+In this stage event loop play its role. event loop did two things here , 1st one is it check call stack queue is empty or not , if empty than it added callback 
+function to call stack to execute, 2nd one is checking callback queue has any iteam or not, if remaining it added to call stack and if not remaing than it pick a 
+finished function from Node APIs. Event loop keep waiting callback queue until the main function pop off from the call stack queue. Node is an non blocking system 
+thats why it print randomly finished work.
 
 Async is multi-thread, which means operations or programs can run in parallel.
 Sync is single-thread, so only one operation or program will run at a time.
@@ -46,15 +66,20 @@ For using express in new directory first install or initialize npm module "npm i
 
 For running js file but this file is not include in root folder than use "node src/app.js". After running this server is up and runnig but for stop server use "ctrl+c"
 
-For running server dont have any idea if we add new route. For this we need to stop server and have to restart the server again. But it is pain ful for each and every time to resart the server. To solve this issue use nodemon "src/app.js".
+For running server dont have any idea if we add new route. For this we need to stop server and have to restart the server again. But it is pain ful for each and every
+time to resart the server. To solve this issue use nodemon "src/app.js".
 
-we use hbs instead handlerbars to integret this module with express. If we want to serve up a static document than we can continue to put them in public but if we need a dynamic content than handlebars is probably the best. So if we use index.hbs than delete or remove index.html from public folder. Note that from website or server no one can access or read hbs file.
+we use hbs instead handlerbars to integret this module with express. If we want to serve up a static document than we can continue to put them in public but if we 
+need a dynamic content than handlebars is probably the best. So if we use index.hbs than delete or remove index.html from public folder. Note that from website or 
+server no one can access or read hbs file.
 index.hbs nothing but a index.html. By hbs we can chsnge our website static to dynamic.
 We can configure or rename views and also for that we have to set the absolute path
 
 In hbs we can assign value as like {{value}} and can also comment by {{! comment}}
 
-nodemon only restart .js or express file but not .hbs file after saving file. But both of them need to load the templates(dir name) but doesnt restarted when new templates are created the server. But we can easily address this by customizing our node on command. For solving this issue we need to close nodemon first by 'ctrl+c' than write the command 'nodemon src/app.js -e js,hbs'. Here -e flag for extension.
+nodemon only restart .js or express file but not .hbs file after saving file. But both of them need to load the templates(dir name) but doesnt restarted when new 
+templates are created the server. But we can easily address this by customizing our node on command. For solving this issue we need to close nodemon first by 'ctrl+c' 
+than write the command 'nodemon src/app.js -e js,hbs'. Here -e flag for extension.
 
 If we get the error when we use partial as like dont find partial than change the register_path as root to only /.
 
@@ -62,4 +87,15 @@ If we want to access or read something or value from .hbs file to other .hbs fil
 
 If someone search a directory which we dont support than give them a useful message as like 404 in our homepage. Through wild-card we can do single or bunch of request. 
 
-Note: when we use render method but from a inside of a folder not root folder than please follow the following structure: res.render(__dirname + 'render_file_path(root to render file directory)'{here write properties as like object}). But if view file or render file or folder is inside of root directory thanuse normal rule.
+Note: when we use render method but from a inside of a folder not root folder than please follow the following structure: 
+res.render(__dirname + 'render_file_path(root to render file directory)'{here write properties as like object}). But if view file or render file or folder is 
+inside of root directory thanuse normal rule.
+
+To use query string it get provided on the end of the url, we start them
+off with a question mark and then we provide key value pairs to pass addional
+information to the server. If we want to add more key in the url than use '&'.
+Base of our information search them isnide our code in 'req.query'
+
+Query_string: it was provided along with the request has been passed by 
+express and the data is made available to us in this object.
+
