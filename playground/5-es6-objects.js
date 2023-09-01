@@ -35,8 +35,9 @@ console.log(stock);
 console.log(rating);
 
 // we can destructuring object property as a function argument
-const transaction = (type, { label, stock }) => {
+const transaction = (type, { label = 'label not matched', stock = 0 } = {}) => {
+  //default perameter set for object
   console.log(type, label, stock);
 };
 
-transaction('order', product);
+transaction('order');

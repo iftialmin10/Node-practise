@@ -1,8 +1,8 @@
 const path = require('path'); //core module dont need to install
 const express = require('express');
 const hbs = require('hbs');
-const geocode = require('./utils/geocode');
-const forecast = require('./utils/forecast');
+// const geocode = require('./utils/geocode');
+// const forecast = require('./utils/forecast');
 
 // Node actually provide us two variable
 //console.log(__dirname); // in console that contains a path to the directory the current script lives in
@@ -89,21 +89,25 @@ app.get('/weather', (req, res) => {
     });
   }
 
-  geocode(req.query.address, (error, { latitude, longitude, location }) => {
-    if (error) {
-      return res.send({ error }); //shortend
-    }
-    forecast(latitude, longitude, (error, forecast) => {
+  geocode(
+    req.query.address,
+    (error, { latitude, longitude, location } = {}) => {
+      //here we also change default value but dont give any value. For this it avoid error
       if (error) {
-        return res.send({ error });
+        return res.send({ error }); //shortend
       }
-      res.send({
-        forecast: forecastData,
-        location,
-        address: req.query.address,
+      forecast(latitude, longitude, (error, forecast) => {
+        if (error) {
+          return res.send({ error });
+        }
+        res.send({
+          forecast: forecastData,
+          location,
+          address: req.query.address,
+        });
       });
-    });
-  });
+    }
+  );
 
   // res.send({
   //   forecast: 'It is raining',
