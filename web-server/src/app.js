@@ -1,8 +1,8 @@
 const path = require('path'); //core module dont need to install
 const express = require('express');
 const hbs = require('hbs');
-// const geocode = require('./utils/geocode');
-// const forecast = require('./utils/forecast');
+const geocode = require('./utils/geocode');
+const forecast = require('./utils/forecast');
 
 // Node actually provide us two variable
 //console.log(__dirname); // in console that contains a path to the directory the current script lives in
