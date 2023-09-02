@@ -15,12 +15,28 @@ fetch('https://puzzle.mead.io/puzzle').then(response => {
 });
 
 //fetch weather API
-fetch('https:.....').then(response => {
-  response.json().then(data => {
-    if (data.error) {
-      return console.log(data.error);
-    }
-    console.log(data.location);
-    console.log(data.forecast);
+
+const weatherForm = document.querySelector('form');
+const search = document.querySelector('input');
+const message1 = document.querySelector('#message-1');
+const message2 = document.querySelector('#message-2');
+
+/* In form submission after click submission btn, all data from 
+document are by default reset. To avoid this problem we have to grab the 
+ argument thats provided into  our event(e) callback, */
+weatherForm.addEventListener('submit', e => {
+  e.preventDefault();
+
+  const location = search.value;
+  message1.textContent = 'Loading.....';
+  message2.textContent = '';
+  fetch('https:.....?address=' + location).then(response => {
+    response.json().then(data => {
+      if (data.error) {
+        return (message1.textContent = data.error);
+      }
+      message1.textContent = data.location;
+      message2.textContent = data.forecast;
+    });
   });
 });
