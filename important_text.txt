@@ -167,3 +167,63 @@ Github:
  Heroku:
  After installing heroku close the terminal and restart the terminal.
  Heroku provide us useful cmd for use.
+
+GIT:
+ In git there are four stage:- Untracked file, Unstaged changes, Staged
+ changes and commits. In git 'read.md' a markdown file which contains 
+ the documentation for our project. If we want to staged single folder 
+ or file then use 'git add folder_name/' or 
+ 'git add folder_name/file_name'. We can also track our code without
+ creating any repository in github web-site.  
+
+SSH:
+We can share our code with third party service in secure way by SSH. 
+SSH stands for secure shell and it gives us a means of securely 
+communicating with another machine. When we are using windows thats mean
+our terminal not support all the command. We need to install git_bash. 
+For using all cmd use bash. 
+
+Important cmd:
+ls/ ls -a = list (if we use -a then hidden file and folder are shown up)
+ls -a -l = listed out hidden all and also in organize way.
+ls -a -l ~/.ssh = its path of tilda(~)
+
+If we have a file called 'id (underscore) RSA' and another called 
+'id (underscore) RSA.pub'. Thats means we do already have a set of SSH 
+keys and we could choose to use those instead of creating new one. 
+
+If we dont have a key then run below command to create SSH key:
+
+'ssh-keygen -t rsa -b 4096 -C "email-address"'
+
+This command allow us to generate SSH key pair. There are three argument 
+provided, first one is 't' stands for type and here we use 'rsa', second 
+one is 'b' stands for bits and we will specify how many bits for this key
+we want enough to be secure, The most common value is '4096', last one 'C'
+(capital C) this is where we can provide a comment for the key what we 
+can think of as a label and its common to use our email address inside of
+here. Press enter for all value set default. After running this cmd to check
+ssh key pair than 1st cmd run again. Here ./ mean main directory , 
+../ means root directory. After running command we found two things
+'id_rsa' its a secret file which we are gonna keep on our machine and we 
+are never gonna share, and other second one is public file 'id_rsa.pub' 
+and this one we can share with github and heroku. This file can secure the
+communication with server and our machine. For future use if we set up an 
+conection we follow two step. First we need to do is make sure our 
+programme is running and second is to going register our new private key
+file. For this we run the command 
+
+'eval `ssh-agent -s`'
+
+if we get id than our prog is running. After running this last is 
+register the file by running the following command:
+
+'ssh-add ~/.ssh/id_rsa' (here we provide private file id path)
+
+After running this command we can see the identity has been added, now
+when we try to facilitate an SSH communication.
+
+
+
+
+
