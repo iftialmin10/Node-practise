@@ -7,13 +7,6 @@ return value from fetch and we provide to it the callback function and
  or dump in the console. Then method is part of a much bigger 
  API known as promises */
 
-fetch('https://puzzle.mead.io/puzzle').then(response => {
-  response.json().then(data => {
-    //here response.json() have 'then' method instead call function
-    console.log(data);
-  });
-});
-
 //fetch weather API
 
 const weatherForm = document.querySelector('form');
@@ -30,7 +23,7 @@ weatherForm.addEventListener('submit', e => {
   const location = search.value;
   message1.textContent = 'Loading.....';
   message2.textContent = '';
-  fetch('https://localhost:3000/weather?address=' + location).then(response => {
+  fetch('/weather?address=' + location).then(response => {
     response.json().then(data => {
       if (data.error) {
         return (message1.textContent = data.error);

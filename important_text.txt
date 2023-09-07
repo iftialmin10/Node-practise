@@ -183,21 +183,36 @@ GIT:
   done what we need to do is take take the public key file and give that 
   to github.com. So it can create that secure connection. For this we can
   do the following step:
+
   1) First go to settings and left_side we find SSH and GPG key,
+
   2) Second step is to trying to setup a new SSH key by clicking new SSH key,
+
   3) In third step there asking for two things one is title and other one
   is key, titel may "work laptop" or "work desktop" its easy to remember
   the key
+
   4) The next one is key file, that is id_rsa.pub, to find this from 
-  terminal we use 'cat ~/.ssh/id_rsa.pub'. After that we get a long string
-  start with ssh-rsa and ends with email which one we use as comment.
+  terminal we use 
+
+  'cat ~/.ssh/id_rsa.pub'. 
+  
+  After that we get a long string
+  start with ssh-rsa and ends with email which one we use in comment or 
+  key spcace.
+
   5) we are gonna copy that to the clipboard and we are gonna use that over
   the text field name 'key' and then we click to add.
-  6) to test the connection we use in git bash "ssh -T git@github.com" . 
+
+  6) to test the connection we use in git bash 
+  
+  "ssh -T git@github.com" . 
+
   This is going to test our SSH connection to the github server. After that
   use yeas key to confirm. Then we get successful message. Here also note 
   that we see in tfhe terminal that "github does not provide shell access"
   Now we are ready to push our code. 
+
   7) Finally we are ready to run our second command.
 
 
@@ -251,6 +266,112 @@ After running this command we can see the identity has been added, now
 when we try to facilitate an SSH communication.
 
 
+@@@ Deploying nodejs to heroku:
+After github setup we have to change the remote from main to heroku.
+For heroku we dont need to touch the heroku website instead we can access
+from terminal. To work with heroku we need to setup SSH public key file
+with heroku. For that we can run only single command:
 
+'heroku keys:add'
+ 
+after running this a question arise which public_key which one we want 
+to upload to heroku with y/n ans. After pressing y we will see our SSH key
+is associated with our heroku account and we are gonna be able to securely
+send code back and forth. We can create our heroku application by using
+
+"heroku create unique_name" ex: ifti-weather-app
+
+we need to create it in our root of our project. After running this command
+First one, its actually going to create a new application on the heroku servers
+and second one its sptting out to url. First is a location where we can
+view our application , this is the live url for the app and the second 
+is the url for the get repository where we should be pushing the code we 
+want to deploy. Before deploying our application if we visit the first url
+than we see welcome message instead application. 
+
+Before we deploying:
+we have to provide it with some basic instruction of what to do when it 
+gets our code. One of the most important things we need to change has to
+do with whats inside of 'package.json'. So in order for heroku to start up
+our application we have to tell it which file to run. Normally we run our
+code in terminal as like 'node app.js' , we also run this command in heroku
+but first we need to specify it to 'package.json' file in script object. 
+In script its allow us to set up scripts, these are key value pairs. 
+The key is a name for the script and the value is what to run from 
+the terminal. In script object we can set property with a command which 
+heroku use for running our code. Here key is '"start"' and key value is 
+'"node src/app.js"' , after setting this up , if heroku runs that command
+its going to start the application up correctly. Now this start script is 
+not limited for heroku, its also used in locally. For using locally we
+use 'npm run start' in the terminal. Its same for both heroku and local 
+use in terminal. After running this command we will see our port is 
+activate. But for heroku gives us a dynamic port value thats why we need
+to change our port value from app.js file. There we declare a new 
+variable after app variable to hold port number. We set value by 'or' 
+operator , thats mean either we get port number from heroku or we set 
+port number. For taking port number from heroku we use 
+'port = process.env.PORT || 3000'. And we use this port variable down 
+below 'app.listen' and swap this port variable with '3000'.
+Now our final step is fixed the address which remain in clinet side 
+Javascript. There we fetch address with local-host port, we need to 
+change this local port address('http://localhost:3000/weather?address=' to 
+'/weather?address'). After that we add and commit this to github and after
+that for pushing this code we use 'git push' to push our code up to the 
+origin remote. From here we can now push up to the heroku by changing 
+remote , before changing remote we shold check available remote list by 
+'git remote'. After that for deploying our we have to do is use 
+'git push heroku master'. After runnig this command our latest commits up
+to the heroku get reomte. When heroku sees that new commits have been pushed
+its going to deploy our application again. After running this command we 
+will see that our dependency for our application is installing. 
+
+
+
+If we change our code for application we should change them in both github
+and heroku also by following steps:
+
+Note: If we change anything in our code first we always need to run them 
+in local host address before deploying to heroku. Its very important. 
+
+For accessing our local host first we need to run 
+'nodemon src/app.js -e js,hbs or npm run start', 
+after that our local host address activated. After changing our code , 
+its time to push to github and heroku by following step:
+
+git status
+git add .
+git commit -m " my commit message"
+git push
+git push heroku master
+end
+
+Every time when we restart our programme we need to run 'nodemon' command.
+But we can handle this issue with creating property in 'package.json' 
+script. For this we named key name as '"dev":"nodemon src/app.js -e js,hbs"'
+after that we simply run this command by 'npm run dev'. Here we can 
+access nodemon from our all project bcz we install as a global module. 
+The problem with global module is that they are not local dependencies.
+So if we are using them in a specific project its best to try to install 
+everything locally. If we share this code with other to add new feature 
+so they download the code and they dont get node modules bcz thats ignored
+with get ignore. After installing npm node module to their machine they
+get package by only package.json thats are local dependencies not global.
+This mean new package.json ignore global nodemon module. Although they 
+install node but it may not matched with version and etc thats why this 
+module dont work to their code. For solving this issue we should uninstall
+nodemon globally by "npm uninstall -g nodemon" and after that we need to 
+reinstall nodemon as a local dependency, something thasts actually listed
+in "package.json" by :"npm install nodemon@1.2.0 --save-dev". When we 
+install something and we use save dev it list it as a "dev dependency "
+in our project. Dev dependenciesour dependencies we only need on our local
+machine. Our developing dependencies arent installed in our production 
+environment which means nodemon is not installed on heroku and heroku 
+never uses the "dev script". After installing nodemon as a local dependencies
+than we can use it by following command: "npm run dev"
+
+
+Thats why its version not stored in package.json file and when we share our
+code with other to work, he/she didnt find the module though they install
+node_module.
 
 

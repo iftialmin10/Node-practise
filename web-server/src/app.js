@@ -11,6 +11,7 @@ const forecast = require('./utils/forecast');
 //console.log(path.join(__dirname, '../public')); // here we join two path together in one
 
 const app = express(); // declare variable to store express and for generate the application use express. Express function doesnt take any argument instead we configure our server by using various methods provided on the application itself
+const port = process.env.PORT || 3000; // here first one is environmental setup and second one is manually set port value
 
 //Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public'); //here we select a file which we want run in our root or home-page
@@ -160,7 +161,7 @@ app.get('*', (req, res) => {
 // in app.listen() function first argument is port number
 // in our local machine port 3000 is working well
 // second argument is callback function an optional for checking the request up
-app.listen(3000, () => {
-  console.log('Server is up on port 3000'); //this message doesnt show on the browser its show only for developer in console
+app.listen(port, () => {
+  console.log('Server is up on port' + port); //this message doesnt show on the browser its show only for developer in console
 });
 // for looking for the server use "localhost:3000" and also see the other page by "localhost:3000/help"
