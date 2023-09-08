@@ -11,6 +11,8 @@ node module than install it by "npm install". Another important thing is
 when we upload any code in github or share code with someone by zip than 
 remove the node module file. 
 
+
+nodemon:
 In node always check folder name in which we run the code by terminal.
 After installing nodemon in windows first check version. If no version 
 show then go to nodemon folder in C drive and delete ps1 file.
@@ -29,7 +31,8 @@ the answer by default. For avoiding this after write "npm init"
 press "ctrl+c" to shutdown. After that use "npm init -y" to set all value 
 as default.
 
-debugger: in our programme we used console.log() for debug our programme. 
+debugger: 
+In our programme we used console.log() for debug our programme. 
 Its a basic tool and also time consuming. Everytime we write console than 
 again need to remove those line. By default debugger dont pause the 
 programme. For running this we have to use "inspect" after "node" keyword 
@@ -359,9 +362,14 @@ get package by only package.json thats are local dependencies not global.
 This mean new package.json ignore global nodemon module. Although they 
 install node but it may not matched with version and etc thats why this 
 module dont work to their code. For solving this issue we should uninstall
-nodemon globally by "npm uninstall -g nodemon" and after that we need to 
+nodemon globally by: 
+"npm uninstall -g nodemon" 
+
+and after that we need to 
 reinstall nodemon as a local dependency, something thasts actually listed
-in "package.json" by :"npm install nodemon@1.2.0 --save-dev". When we 
+in "package.json" by :
+"npm install nodemon@1.2.0 --save-dev". 
+When we 
 install something and we use save dev it list it as a "dev dependency "
 in our project. Dev dependenciesour dependencies we only need on our local
 machine. Our developing dependencies arent installed in our production 
@@ -374,4 +382,26 @@ Thats why its version not stored in package.json file and when we share our
 code with other to work, he/she didnt find the module though they install
 node_module.
 
+
+MONGODB:
+SQL: Its stand for structured query language
+MONGODB is a NOSQL database. NOSQL stands for not only structured query 
+language. MONGODB provides nodejs developer with npm module that can easily
+be used to read and write from the database. 
+
+SQL vs NoSQL:
+
+SQL:
+1. In SQL our data is stored in a table called database. We may have many
+table for the user
+2. In SQL there are row /record  and column
+
+NOSQL:
+1. Its referred to as a collection, we may have many collection as its need.
+2. In NOSQL there are document look a whole lot like json and here column
+means field.
+
+Collection: A collection is a list of entries. Those individual entries 
+are referred to as document and a document can have as many fields as we 
+need .
 
