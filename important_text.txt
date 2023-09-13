@@ -25,6 +25,7 @@ nodemon@1.18.5
 request@2.88.0
 express@4.16.4
 hbs@4.0.1
+mongodb@3.1.10
 
 At the time of installing npm module we face ton of question and we set 
 the answer by default. For avoiding this after write "npm init" 
@@ -405,3 +406,75 @@ Collection: A collection is a list of entries. Those individual entries
 are referred to as document and a document can have as many fields as we 
 need .
 
+
+Installation process of MONGODB:::::::
+1. First download mongodb "database community server" from their server.
+
+2. Rename into the shorest name
+
+3. Move this folder to root folder from where we store our code. As like 
+Node.js_practise
+
+4. After that we also need to create a place to put the data that the 
+database stores in the same place. Here folder name as "mongodb-data"
+
+5. Now we extract data from mongodb.zip and store them into mongodb-data.
+
+6. For running the server first we need to execute the mongodb.exe and 
+aslo set the path to storing them where
+/Programming/Node.js_practice/Node-practise/mongodb/bin/mongod.exe --dbpath=/Programming/Node.js_practice/Node-practise/mongodb-data
+
+7. The important things are maybe 5 lines before the end in console line.
+
+8. There we found mongodb default port value with port number and also
+understand our server is up and running and its waiting for connection.
+
+
+:::Before interact with mongodb we need to install database GUI viewers:::
+Its a easiest way to manage our database
+For this we need to download "robo 3t" or "studio 3T" and install it.
+For windows we need to install .exe fie for running the app and for first
+time use we need to give the permission.
+After opening studio 3t we need to create a new connection by following:
+press connect -> select "manually configuration" -> next -> under server 
+or connection tab we need to give a connection name as like 
+"Local MongoDB Database". 
+
+Note: Its mandatory to running up the installion command of mongodb before
+connect the database or check connection.
+
+After that we will test our connection by clicking "test connection" and 
+after testing we see all parameters are tick marked or green, thats mean
+our connection is perfect and we will save this file for the first time.
+If there are no error pop-up thats means our work is good.
+
+For running saving connection we will double click on it.
+
+For checking version right click on the file name here is "Local MongoDB 
+Database". Then we see "open intellishell" and click it, after that we get
+command prompt where we can write command. For checking version use 
+"db.version() " here db is an object and version is a method of db object.
+
+When we are working on mongodb and interacting with it via the mongodb 
+shell, we are just using js to manipulate the database. If our version 
+showed thats mean our connection response us.
+
+We need to install mongodb driver which is called native driver to 
+interact with web from node.js. 
+
+By following steps we can install native driver:
+MongoDB homepage -> Resource -> Documentation -> Drivers -> Find API documentation
+
+Before installing npm mongodb and for navigate it we need to create second
+terminal tab beside with database running in order for us to connect to it.
+So in the terminal we click on "+" button for create a new terminal.
+Second terminal use-case is for installing different npm module and node 
+app running.
+
+:::::::::::::::::::::::::: task  manager:::::::::::::
+Create new directory or file to initialize npm and can install npm module
+in it by command "cd task-manager" and than type "npm init -y". After that
+command "npm i mongodb@3.1.10"
+
+After running node js running command , if we go to our 1st terminal or 
+mongodb terminal we see that "connection accepted"
