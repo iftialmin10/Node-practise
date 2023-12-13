@@ -155,7 +155,7 @@ express and the data is made available to us in this object.
 
 App deployment:
 
-Git: 
+Git:
 It allows us to put our application under version control thats going 
 to allow us to track the changes to our app over time.
 
@@ -163,7 +163,7 @@ Github:
  It is going to allow us to backup our source code and collaborate with 
  others.
 
- Heroku: 
+ Heroku:
  It is going to give us everything we need to deploy our nodejs 
  application to a production server. So our app is accessible 
  with just a single URL.
@@ -184,7 +184,7 @@ GIT:
  to github by following second step. In second step after running 
  second command it will fail bcz its not sure of exactly who's sending it
   the code but we need to do is finalize our SSH configaration. So get that
-  done what we need to do is take take the public key file and give that 
+  done what we need to do is take the public key file and give that 
   to github.com. So it can create that secure connection. For this we can
   do the following step:
 
@@ -476,5 +476,6 @@ Create new directory or file to initialize npm and can install npm module
 in it by command "cd task-manager" and than type "npm init -y". After that
 command "npm i mongodb@3.1.10"
 
-After running node js running command , if we go to our 1st terminal or 
+After running node js running command, if we go to our 1st terminal or 
 mongodb terminal we see that "connection accepted"
+
